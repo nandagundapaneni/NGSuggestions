@@ -73,7 +73,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         cell.separatorInset = UIEdgeInsetsZero
         
         let suggestion:Suggestion = (self.suggestions[indexPath.row] as? Suggestion)!
-        cell.textLabel?.text = suggestion.name as? String
+        cell.textLabel?.text = suggestion.name!
+        cell.detailTextLabel?.text = suggestion.group!
         
         return cell
     }
@@ -81,6 +82,16 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        let suggestion:Suggestion = (self.suggestions[indexPath.row] as? Suggestion)!
+        
+        let alertController = UIAlertController(title:suggestion.name!, message: suggestion.getInfo(), preferredStyle: UIAlertControllerStyle.Alert)
+        let cancel = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: { action in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        });
+        
+        alertController.addAction(cancel)
+        self.presentViewController(alertController, animated: true, completion: nil);
+
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }

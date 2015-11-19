@@ -26,6 +26,7 @@ class Suggestion: NSObject {
     static let kGroup = "group_sic_code_name_ext"
     static let kCoordinates = "coordinates"
     static let kAddress = "address"
+    static let kCity = "city"
     static let kState = "state"
     static let kPCode = "postal_code"
     static let kCountry = "country"
@@ -36,17 +37,18 @@ class Suggestion: NSObject {
     static let kLatitude = "lat"
     static let kLongitude = "lng"
     
-    var name:NSString?
-    var group:NSString?
+    var name:String?
+    var group:String?
     var latitude:CLLocationDegrees?
     var longitude:CLLocationDegrees?
-    var address:NSString?
-    var state:NSString?
-    var pCode:NSString?
-    var country:NSString?
+    var address:String?
+    var city:String?
+    var state:String?
+    var pCode:String?
+    var country:String?
     var sideOfStreet:SideOfStreet = SideOfStreet.None
     var distance:Double?
-    var distanceUnit:NSString?
+    var distanceUnit:String?
     var resultIndex:Int?
     
     override init() {
@@ -55,31 +57,46 @@ class Suggestion: NSObject {
     
     init(dictionary: NSDictionary?) {
         
-        self.name = dictionary?[Suggestion.kName] as? NSString
-        self.group = dictionary?[Suggestion.kGroup] as? NSString
-        self.latitude = dictionary?[Suggestion.kLatitude] as? Double
-        self.longitude = dictionary?[Suggestion.kLongitude] as? Double
-        self.address = dictionary?[Suggestion.kAddress] as? NSString
-        self.state = dictionary?[Suggestion.kState] as? NSString
-        self.pCode = dictionary?[Suggestion.kPCode] as? NSString
-        self.country = dictionary?[Suggestion.kCountry] as? NSString
+        self.name = dictionary?[Suggestion.kName] as? String
+        
+        let fieldDict: NSDictionary? = dictionary?[Suggestion.kFields] as? NSDictionary
+        
+        self.group = fieldDict?[Suggestion.kGroup] as? String
+        self.latitude = fieldDict?[Suggestion.kLatitude] as? Double
+        self.longitude = fieldDict?[Suggestion.kLongitude] as? Double
+        self.address = fieldDict?[Suggestion.kAddress] as? String
+        self.city = fieldDict?[Suggestion.kCity] as? String
+        self.state = fieldDict?[Suggestion.kState] as? String
+        self.pCode = fieldDict?[Suggestion.kPCode] as? String
+        self.country = fieldDict?[Suggestion.kCountry] as? String
         self.distance = dictionary?[Suggestion.kDistance] as? Double
-        self.distanceUnit = dictionary?[Suggestion.kDistanceUnit] as? NSString
+        self.distanceUnit = dictionary?[Suggestion.kDistanceUnit] as? String
         self.resultIndex = dictionary?[Suggestion.kResultNumber] as? Int
     }
     
     func fillFromDictionary(dictionary:NSDictionary?){
         
-        self.name = dictionary?[Suggestion.kName] as? NSString
-        self.group = dictionary?[Suggestion.kGroup] as? NSString
-        self.latitude = dictionary?[Suggestion.kLatitude] as? Double
-        self.longitude = dictionary?[Suggestion.kLongitude] as? Double
-        self.address = dictionary?[Suggestion.kAddress] as? NSString
-        self.state = dictionary?[Suggestion.kState] as? NSString
-        self.pCode = dictionary?[Suggestion.kPCode] as? NSString
-        self.country = dictionary?[Suggestion.kCountry] as? NSString
+        self.name = dictionary?[Suggestion.kName] as? String
+        let fieldDict: NSDictionary? = dictionary?[Suggestion.kFields] as? NSDictionary
+        
+        self.group = fieldDict?[Suggestion.kGroup] as? String
+        self.latitude = fieldDict?[Suggestion.kLatitude] as? Double
+        self.longitude = fieldDict?[Suggestion.kLongitude] as? Double
+        self.address = fieldDict?[Suggestion.kAddress] as? String
+        self.city = fieldDict?[Suggestion.kCity] as? String
+        self.state = fieldDict?[Suggestion.kState] as? String
+        self.pCode = fieldDict?[Suggestion.kPCode] as? String
+        self.country = fieldDict?[Suggestion.kCountry] as? String
+
         self.distance = dictionary?[Suggestion.kDistance] as? Double
-        self.distanceUnit = dictionary?[Suggestion.kDistanceUnit] as? NSString
+        self.distanceUnit = dictionary?[Suggestion.kDistanceUnit] as? String
         self.resultIndex = dictionary?[Suggestion.kResultNumber] as? Int
+    }
+    
+    func getInfo() -> String?
+    {
+        let infoString:String = "Name: \(self.name!) \n Group:\(self.group!) \n \(self.address!),\n\(self.city!),\(self.state!),\(self.country!)-\(self.pCode!), \n Distnace: \(self.distance!) \(self.distanceUnit!)"
+        
+        return infoString
     }
 }
