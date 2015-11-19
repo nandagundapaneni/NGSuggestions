@@ -24,8 +24,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.tableView.layoutMargins = UIEdgeInsetsZero
-        let location = CLLocationCoordinate2DMake(40.024227, -105.220264);
-        self.getDataForLocation(location)
+
+        self.getDataForLocation(Suggestion.Default_Location)
         
         }
 

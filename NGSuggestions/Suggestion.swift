@@ -18,6 +18,25 @@ class Suggestion: NSObject {
         case None
     }
     
+    enum HeadingQuadrant:Int{
+        
+        case UNKNOWN
+        case NE
+        case NW
+        case SE
+        case SW
+    }
+    
+    enum Magnetic:Int
+    {
+        case North = 0
+        case East = 90
+        case South = 180
+        case West = 270
+    }
+    
+    static let Default_Location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(40.024227, -105.220264);
+    
     // JSON keys
     static let kSearchresults = "searchResults"
     static let kResultsCount = "resultsCount"
