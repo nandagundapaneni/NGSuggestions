@@ -38,8 +38,8 @@ class ViewController: UIViewController {
                 return
             }
             
-            self.suggestions = result;
-            self.suggestionsCount = resultCount;
+            self.suggestions = result
+            self.suggestionsCount = resultCount
         }
     }
 
