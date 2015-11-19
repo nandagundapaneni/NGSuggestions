@@ -24,11 +24,13 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let location = CLLocationCoordinate2DMake(40.024227, -105.220264);
+        self.tableView.layoutMargins = UIEdgeInsetsZero
         
         self.activityIndicator.startAnimating()
         DataController.sharedInstance.getSuggestionForCurrentLocation(location, radius: 0,maxResults: 0) { (result,resultCount, error) -> Void in
             
             self.activityIndicator.stopAnimating()
+            self.locationCoordinatesLabel.text = "ORIGIN:\(location.latitude),\(location.longitude)"
             
             if error != nil{
             
@@ -65,6 +67,10 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         let cellIdentifier = "suggestionCellIdentifier"
         
         let cell:UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+        
+        cell.preservesSuperviewLayoutMargins = false
+        cell.layoutMargins = UIEdgeInsetsZero
+        cell.separatorInset = UIEdgeInsetsZero
         
         let suggestion:Suggestion = (self.suggestions[indexPath.row] as? Suggestion)!
         cell.textLabel?.text = suggestion.name as? String
