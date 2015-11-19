@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="968-h4-Uai">
-                                <rect key="frame" x="158" y="20" width="380" height="31.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="968-h4-Uai">
+                                <rect key="frame" x="174" y="20" width="364" height="31.5"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31.5" id="ZZu-tj-0ya"/>
@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EMZ-hS-jnd">
-                                <rect key="frame" x="0.0" y="59.5" width="600" height="540.5"/>
+                                <rect key="frame" x="0.0" y="59" width="600" height="540.5"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -72,12 +72,12 @@
                                 <animations/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sou-Fd-aSW">
-                                <rect key="frame" x="0.0" y="20" width="161" height="20"/>
+                                <rect key="frame" x="0.0" y="20" width="161" height="31.5"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="0.80658743559761659" blue="0.27785772660282049" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="161" id="TUx-ff-H2n"/>
-                                    <constraint firstAttribute="height" constant="20" id="hyU-SL-2x6"/>
+                                    <constraint firstAttribute="height" constant="31.5" id="hyU-SL-2x6"/>
                                 </constraints>
                                 <state key="normal" title="Direction">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,9 +86,10 @@
                                     <action selector="directionButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0vq-Xz-SR3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcv-VP-dUS">
-                                <rect key="frame" x="568" y="20" width="22" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcv-VP-dUS">
+                                <rect key="frame" x="553" y="20" width="37" height="30"/>
                                 <animations/>
+                                <state key="normal" title="Help!"/>
                                 <connections>
                                     <action selector="helpTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mx9-EG-hYH"/>
                                 </connections>
@@ -98,7 +99,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Wu5-jJ-aQn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-1" id="02H-Cw-t8J"/>
-                            <constraint firstItem="968-h4-Uai" firstAttribute="leading" secondItem="Sou-Fd-aSW" secondAttribute="trailing" constant="-3" id="0CE-Ws-rQT"/>
+                            <constraint firstItem="968-h4-Uai" firstAttribute="leading" secondItem="Sou-Fd-aSW" secondAttribute="trailing" constant="13" id="0CE-Ws-rQT"/>
                             <constraint firstItem="EMZ-hS-jnd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="18e-rx-ZA1"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EMZ-hS-jnd" secondAttribute="bottom" id="Ju4-wp-1kq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tcv-VP-dUS" secondAttribute="trailing" constant="-10" id="NeV-Pk-HdO"/>
