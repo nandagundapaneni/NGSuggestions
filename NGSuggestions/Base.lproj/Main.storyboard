@@ -18,26 +18,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="968-h4-Uai">
-                                <rect key="frame" x="158" y="20" width="442" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="968-h4-Uai">
+                                <rect key="frame" x="158" y="20" width="380" height="31.5"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20.5" id="ZZu-tj-0ya"/>
+                                    <constraint firstAttribute="height" constant="31.5" id="ZZu-tj-0ya"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EMZ-hS-jnd">
-                                <rect key="frame" x="0.0" y="48" width="600" height="552"/>
+                                <rect key="frame" x="0.0" y="59.5" width="600" height="540.5"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="0.0" reuseIdentifier="suggestionCellIdentifier" textLabel="ABp-Uu-Y1s" detailTextLabel="6vA-DB-1OU" style="IBUITableViewCellStyleSubtitle" id="NPh-Ed-MF9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="0.0" reuseIdentifier="suggestionCellIdentifier" textLabel="ABp-Uu-Y1s" detailTextLabel="6vA-DB-1OU" style="IBUITableViewCellStyleSubtitle" id="NPh-Ed-MF9">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NPh-Ed-MF9" id="BME-ew-eok">
-                                            <rect key="frame" x="0.0" y="0.0" width="553" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ABp-Uu-Y1s">
@@ -86,6 +86,13 @@
                                     <action selector="directionButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0vq-Xz-SR3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcv-VP-dUS">
+                                <rect key="frame" x="568" y="20" width="22" height="22"/>
+                                <animations/>
+                                <connections>
+                                    <action selector="helpTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mx9-EG-hYH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -94,14 +101,16 @@
                             <constraint firstItem="968-h4-Uai" firstAttribute="leading" secondItem="Sou-Fd-aSW" secondAttribute="trailing" constant="-3" id="0CE-Ws-rQT"/>
                             <constraint firstItem="EMZ-hS-jnd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="18e-rx-ZA1"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EMZ-hS-jnd" secondAttribute="bottom" id="Ju4-wp-1kq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tcv-VP-dUS" secondAttribute="trailing" constant="-10" id="NeV-Pk-HdO"/>
                             <constraint firstItem="Sou-Fd-aSW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="Q2B-vH-Qof"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="968-h4-Uai" secondAttribute="trailing" constant="-20" id="Tep-yO-Cnc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="968-h4-Uai" secondAttribute="trailing" constant="42" id="Tep-yO-Cnc"/>
                             <constraint firstItem="EMZ-hS-jnd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Wdp-9c-bKT"/>
+                            <constraint firstItem="tcv-VP-dUS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="WxS-fs-FxL"/>
                             <constraint firstItem="Sou-Fd-aSW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="cRu-eT-Ibg"/>
                             <constraint firstItem="968-h4-Uai" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="df5-ES-12b"/>
                             <constraint firstItem="Sou-Fd-aSW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="hUh-GP-dHq"/>
                             <constraint firstItem="Wu5-jJ-aQn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="1" id="pUI-rN-oFH"/>
-                            <constraint firstItem="EMZ-hS-jnd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="28" id="zcE-pE-019"/>
+                            <constraint firstItem="EMZ-hS-jnd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="39.5" id="zcE-pE-019"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="NGSuggestions" id="LAL-W7-9Lr"/>

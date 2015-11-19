@@ -58,7 +58,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     @IBAction func directionButtonTapped(sender: AnyObject) {
         
-        let alertController = UIAlertController(title:"How to use?", message: "Keep pointing your phone in different directions to use the magnetic heading of the phone to show the places in that direction. This is just a prototype so the calculations may not be accurate!", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title:"What's this?", message: "Direction your phone is pointing currently", preferredStyle: UIAlertControllerStyle.Alert)
         let cancel = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: { action in
             self.dismissViewControllerAnimated(true, completion: nil)
         });
@@ -68,6 +68,16 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     }
     
+    @IBAction func helpTapped(sender: UIButton) {
+        let alertController = UIAlertController(title:"How to use?", message: "Keep pointing your phone in different directions to use the magnetic heading of the phone to show the places in that direction. This is just a prototype so the calculations may not be accurate!", preferredStyle: UIAlertControllerStyle.Alert)
+        let cancel = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: { action in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        });
+        
+        alertController.addAction(cancel)
+        self.presentViewController(alertController, animated: true, completion: nil);
+        
+    }
     
     func getDataForLocation(location:CLLocationCoordinate2D){
         self.activityIndicator.startAnimating()
