@@ -17,7 +17,7 @@ class DataController: NSObject {
     static let Origin = "&origin="
     static let resultsFilter = "&maxMatches="
     static let Default_Radius = 3200.00
-    static let DefaultMaxMatches = 20
+    static let DefaultMaxMatches = 100
     
     static let sharedInstance = DataController();
     
@@ -51,8 +51,8 @@ class DataController: NSObject {
                 
                 for dict in jsonArray!{
                     let dictionary = dict as? NSDictionary
-                    let suggestion:Suggestion = Suggestion(dictionary: dictionary)
-                    
+                    let suggestion:Suggestion = Suggestion(dictionary: dictionary,origin: origin)
+
                     sugesstionsArray.addObject(suggestion)
                 }
                 
