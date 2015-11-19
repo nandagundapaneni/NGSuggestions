@@ -13,7 +13,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var headingLabel: UILabel!
+
+    @IBOutlet weak var directionButton: UIButton!
     
     @IBOutlet weak var locationCoordinatesLabel: UILabel!
     
@@ -31,6 +32,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         self.tableView.layoutMargins = UIEdgeInsetsZero
 
+        // Default location -- Mainly for testing or for running on a simulator
         self.getDataForLocation(Suggestion.Default_Location)
         
         
@@ -47,15 +49,25 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         self.locationManager.headingFilter = 5
         self.locationManager.startUpdatingHeading()
         
-        
-        
-        
         }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func directionButtonTapped(sender: AnyObject) {
+        
+        let alertController = UIAlertController(title:"How to use?", message: "Keep pointing your phone in different directions to use the magnetic heading of the phone to show the places in that direction. This is just a prototype so the calculations may not be accurate!", preferredStyle: UIAlertControllerStyle.Alert)
+        let cancel = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: { action in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        });
+        
+        alertController.addAction(cancel)
+        self.presentViewController(alertController, animated: true, completion: nil);
+    
+    }
+    
     
     func getDataForLocation(location:CLLocationCoordinate2D){
         self.activityIndicator.startAnimating()
@@ -127,7 +139,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         self.updateVisiblePlaces(self.currentQuadDirection!)
         
-        self.headingLabel.text = Suggestion.getDirectionString(self.currentQuadDirection!)
+        self.directionButton.setTitle(Suggestion.getDirectionString(self.currentQuadDirection!), forState: UIControlState.Normal)
     }
     
     
