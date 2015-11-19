@@ -51,6 +51,17 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         }
 
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        self.locationManager.startUpdatingLocation()
+        self.locationManager.startUpdatingHeading()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -129,11 +140,6 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         self.currentLocation = newLocation
         
         self.getDataForLocation((self.currentLocation?.coordinate)!)
-        
-        
-        self.locationManager.stopUpdatingLocation()
-        self.locationManager.startMonitoringSignificantLocationChanges()
-    
     }
     
     
