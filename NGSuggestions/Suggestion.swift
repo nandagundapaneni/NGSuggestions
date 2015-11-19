@@ -43,7 +43,7 @@ class Suggestion: NSObject {
         static let West = 270.00
     }
     
-    static let Default_Location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(40.024227, -105.220264);
+    static let Default_Location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(39.750847, -104.999750);
     
     // JSON keys
     static let kSearchresults = "searchResults"
