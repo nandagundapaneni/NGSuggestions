@@ -56,7 +56,6 @@ class DataController: NSObject {
                     sugesstionsArray.addObject(suggestion)
                 }
                 
-
                 onCompletion(result: sugesstionsArray, resultCount: resultCount, error: nil)
                 
             case .Failure(let error):
