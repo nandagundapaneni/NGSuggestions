@@ -9,10 +9,15 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var suggestions:NSArray?
+    @IBOutlet weak var headingLabel: UILabel!
+    
+    @IBOutlet weak var locationCoordinatesLabel: UILabel!
+    
+    var suggestions:NSArray = []
     var suggestionsCount:Int?
     
     override func viewDidLoad() {
@@ -38,8 +43,9 @@ class ViewController: UIViewController {
                 return
             }
             
-            self.suggestions = result
+            self.suggestions = result!
             self.suggestionsCount = resultCount
+            self.tableView.reloadData()
         }
     }
 
@@ -47,7 +53,30 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1;
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.suggestions.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cellIdentifier = "suggestionCellIdentifier"
+        
+        let cell:UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+        
+        let suggestion:Suggestion = (self.suggestions[indexPath.row] as? Suggestion)!
+        cell.textLabel?.text = suggestion.name as? String
+        
+        return cell
+    }
 
 
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
 }
 
