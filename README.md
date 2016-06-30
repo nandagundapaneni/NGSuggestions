@@ -9,6 +9,6 @@
  are in that direction.
  Please use the NGSuggestions.xcworkspace instead of the .xcodeproj as this project used cocoapods for dependency management
   
-Requires <b>iOS 9.1</b> and <b>iPhone</b> (Will run on simulator but no location updates on a simulator. Although you can specify a location)
+Requires <b>iOS 9.1</b> and <b>iPhone</b> (Choose direction using the direction button)
  
 Webservice API's : <b>MapQuest Inc.</b> 
