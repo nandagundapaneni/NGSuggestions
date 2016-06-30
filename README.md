@@ -2,10 +2,9 @@
 
 <b>How to use this app?</b>
  
- Suggestions based of current location
+ Suggestions based of current location and user heading (Approximate direction the phone is pointing)
  
- Once you install and open the app for first time the app would ask for permission to use your location
- to give you suggestions about places around you. Point your phone at different directions to see what places 
+ Point your phone at different directions to see what places 
  are in that direction.
  Please use the NGSuggestions.xcworkspace instead of the .xcodeproj as this project used cocoapods for dependency management
   
