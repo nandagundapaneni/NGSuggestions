@@ -6,6 +6,7 @@
 //  Copyright © 2015 NandaKG. All rights reserved.
 //
 
+
 import UIKit
 import CoreLocation
 
@@ -69,13 +70,58 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     @IBAction func directionButtonTapped(sender: AnyObject) {
         
-        let alertController = UIAlertController(title:"What's this?", message: "Direction your phone is pointing currently", preferredStyle: UIAlertControllerStyle.Alert)
-        let cancel = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: { action in
+#if (arch(i386) || arch(x86_64)) && os(iOS)
+            let alertController = UIAlertController(title:"What's this?", message: "Direction your phone is pointing currently", preferredStyle: UIAlertControllerStyle.ActionSheet)
+
+            
+        let ne = UIAlertAction(title: "NORTH EAST", style: UIAlertActionStyle.Default, handler: { action in
+            self.directionButton.setTitle(action.title, forState: .Normal)
+            self.updateVisiblePlaces(Suggestion.HeadingQuadrant.NE)
             self.dismissViewControllerAnimated(true, completion: nil)
         });
-        
+        let nw = UIAlertAction(title: "NORTH WEST", style: UIAlertActionStyle.Default, handler: { action in
+            self.directionButton.setTitle(action.title, forState: .Normal)
+            self.updateVisiblePlaces(Suggestion.HeadingQuadrant.NW)
+            self.dismissViewControllerAnimated(true, completion: nil)
+        });
+
+        let se = UIAlertAction(title: "SOUTH EAST", style: UIAlertActionStyle.Default, handler: { action in
+            self.directionButton.setTitle(action.title, forState: .Normal)
+            self.updateVisiblePlaces(Suggestion.HeadingQuadrant.SE)
+            self.dismissViewControllerAnimated(true, completion: nil)
+        });
+
+        let sw = UIAlertAction(title: "SOUTH WEST", style: UIAlertActionStyle.Default, handler: { action in
+            self.directionButton.setTitle(action.title, forState: .Normal)
+            self.updateVisiblePlaces(Suggestion.HeadingQuadrant.SW)
+            self.dismissViewControllerAnimated(true, completion: nil)
+        });
+          
+        let cancel = UIAlertAction(title: "CLOSE", style: UIAlertActionStyle.Cancel, handler: { action in
+            self.directionButton.setTitle("Direction", forState: .Normal)
+            self.showAllPlaces()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        });
+
+        alertController.addAction(ne)
+        alertController.addAction(nw)
+        alertController.addAction(se)
+        alertController.addAction(sw)
         alertController.addAction(cancel)
         self.presentViewController(alertController, animated: true, completion: nil);
+        
+#else
+            
+        let alertController = UIAlertController(title:"What's this?", message: "Direction your phone is pointing currently", preferredStyle: UIAlertControllerStyle.Alert)
+        let cancel = UIAlertAction(title: "CLOSE", style: UIAlertActionStyle.Cancel, handler: { action in
+
+            self.dismissViewControllerAnimated(true, completion: nil)
+            });
+            
+            
+            alertController.addAction(cancel)
+            self.presentViewController(alertController, animated: true, completion: nil);
+#endif
     
     }
     
@@ -158,6 +204,10 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         self.directionButton.setTitle(Suggestion.getDirectionString(self.currentQuadDirection!), forState: UIControlState.Normal)
     }
     
+    func  showAllPlaces() {
+        self.suggestionsVisible.addObjectsFromArray(self.suggestions as! [Suggestion])
+        self.tableView.reloadData()
+    }
     
     func updateVisiblePlaces(quad:Suggestion.HeadingQuadrant)
     {
@@ -167,7 +217,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         {
             let sug = s as! Suggestion
             
-            if(self.currentQuadDirection == sug.headingQuadrant){
+            if(quad == sug.headingQuadrant){
                 self.suggestionsVisible.addObject(sug as Suggestion!)
             }
         }
