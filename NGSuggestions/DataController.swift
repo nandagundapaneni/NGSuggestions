@@ -12,7 +12,7 @@ import SwiftyJSON
 import CoreLocation
 
 class DataController: NSObject {
-    static let API_KEY = "8ToaeIoIOGxRGCPUCgh2of8uTMM3wRmV"
+    static let API_KEY = "YOUR_KEY_HERE"
     static let BaseURLString = "http://www.mapquestapi.com/search/v2/radius?key="
     static let Origin = "&origin="
     static let resultsFilter = "&maxMatches="
