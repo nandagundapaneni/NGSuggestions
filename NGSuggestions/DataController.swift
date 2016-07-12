@@ -25,18 +25,19 @@ class DataController: NSObject {
         
     }
     
-    func getSuggestionForCurrentLocation(origin:CLLocationCoordinate2D, var radius:Double, var maxResults:Int, onCompletion:(result:NSArray?,resultCount:Int?,error:NSError?) -> Void)
+    func getSuggestionForCurrentLocation(origin:CLLocationCoordinate2D, radius:Double, maxResults:Int, onCompletion:(result:NSArray?,resultCount:Int?,error:NSError?) -> Void)
     {
-        if radius<=0{
-            radius = DataController.Default_Radius
+        var  radiusOpt = radius
+        if radiusOpt<=0{
+            radiusOpt = DataController.Default_Radius
         }
-        
-        if maxResults<=0{
-            maxResults = DataController.DefaultMaxMatches
+        var maxResultsOpt = maxResults
+        if maxResultsOpt<=0{
+            maxResultsOpt = DataController.DefaultMaxMatches
         }
         
         let coordinates = "\(origin.latitude),\(origin.longitude)"
-        let urlString = DataController.BaseURLString + DataController.API_KEY + DataController.resultsFilter + "\(maxResults)" + DataController.Origin + coordinates
+        let urlString = DataController.BaseURLString + DataController.API_KEY + DataController.resultsFilter + "\(maxResultsOpt)" + DataController.Origin + coordinates
         
         print(urlString)
         
